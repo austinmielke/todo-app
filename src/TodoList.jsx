@@ -28,12 +28,19 @@ const TodoList = () => {
     setTodos(updatedTodos)
   }
 
+  const deleteTodo = (id) => {
+    const updatedTodos = todos.filter((todo) => {
+      return todo.id !== id
+    })
+    setTodos(updatedTodos)
+  }
+
   return (
     <>
       <TodoInput addTodo={addTodo} />
       <ul className="mx-auto w-full">
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo} />
+          <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} />
         ))}
       </ul>
     </>
