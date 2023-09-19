@@ -1,13 +1,42 @@
+import { useState } from 'react'
+import Todo from './Todo'
+import TodoInput from './TodoInput'
+
 const TodoList = () => {
+  const defaultTasks = [
+    {
+      id: '123',
+      task: 'Do laundry',
+      completed: false
+    },
+    {
+      id: '124',
+      task: 'Clean bathroom',
+      completed: false
+    },
+    {
+      id: '125',
+      task: 'Make bed',
+      completed: true
+    }
+  ]
+
+  const [todos, setTodos] = useState(defaultTasks)
+
+  const addTodo = (newTodo) => {
+    const updatedTodos = [...todos, newTodo]
+    setTodos(updatedTodos)
+  }
+
   return (
-    <ul className="mx-auto w-full">
-      <li className="join w-full">
-        <input type="checkbox" checked={false} className="checkbox mr-2" />
-        <span className="mr-auto">Task</span>
-        <button className="btn btn-warning btn-xs mr-2">Edit</button>
-        <button className="btn btn-error btn-xs">Delete</button>
-      </li>
-    </ul>
+    <>
+      <TodoInput addTodo={addTodo} />
+      <ul className="mx-auto w-full">
+        {todos.map((todo) => (
+          <Todo key={todo.id} todo={todo} />
+        ))}
+      </ul>
+    </>
   )
 }
 
