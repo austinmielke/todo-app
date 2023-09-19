@@ -1,5 +1,7 @@
+import Layout from './Layout'
+
 function App() {
-  return <h1>Todo App</h1>
+  return <Layout></Layout>
 }
 
 export default App
