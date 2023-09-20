@@ -20,7 +20,7 @@ const TodoInput = ({ addTodo }) => {
   }
 
   return (
-    <form className="join mx-auto mb-8 w-full" onSubmit={handleFormSubmit}>
+    <form className="join mx-auto w-full" onSubmit={handleFormSubmit}>
       <input
         className="input join-item input-bordered w-full"
         name="new-todo"

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import Todo from './Todo'
 import TodoInput from './TodoInput'
 
@@ -35,6 +35,10 @@ const TodoList = () => {
     setTodos(updatedTodos)
   }
 
+  const handleClear = () => {
+    setTodos([])
+  }
+
   const toggleComplete = (id) => {
     const updatedTodos = todos.map((todo) => {
       return todo.id === id
@@ -62,17 +66,24 @@ const TodoList = () => {
   return (
     <>
       <TodoInput addTodo={addTodo} />
-      <ul className="mx-auto w-full">
-        {todos.map((todo) => (
-          <Todo
-            deleteTodo={deleteTodo}
-            key={todo.id}
-            todo={todo}
-            toggleComplete={toggleComplete}
-            updateTask={updateTask}
-          />
-        ))}
-      </ul>
+      {todos.length > 0 && (
+        <Fragment>
+          <ul className="mx-auto mt-8 w-full">
+            {todos.map((todo) => (
+              <Todo
+                deleteTodo={deleteTodo}
+                key={todo.id}
+                todo={todo}
+                toggleComplete={toggleComplete}
+                updateTask={updateTask}
+              />
+            ))}
+          </ul>
+          <button className="btn btn-error btn-sm" onClick={handleClear}>
+            Clear All Todos
+          </button>
+        </Fragment>
+      )}
     </>
   )
 }
