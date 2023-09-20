@@ -47,16 +47,29 @@ const TodoList = () => {
     setTodos(updatedTodos)
   }
 
+  const updateTask = (id, newTask) => {
+    const updatedTodos = todos.map((todo) => {
+      return todo.id === id
+        ? {
+            ...todo,
+            task: newTask
+          }
+        : todo
+    })
+    setTodos(updatedTodos)
+  }
+
   return (
     <>
       <TodoInput addTodo={addTodo} />
       <ul className="mx-auto w-full">
         {todos.map((todo) => (
           <Todo
+            deleteTodo={deleteTodo}
             key={todo.id}
             todo={todo}
-            deleteTodo={deleteTodo}
             toggleComplete={toggleComplete}
+            updateTask={updateTask}
           />
         ))}
       </ul>
