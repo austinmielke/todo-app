@@ -1,31 +1,16 @@
 import { Fragment, useState } from 'react'
 import Todo from './Todo'
 import TodoInput from './TodoInput'
+import { useLocalStorage } from '@uidotdev/usehooks'
 
 const TodoList = () => {
-  const defaultTasks = [
-    {
-      id: '123',
-      task: 'Do laundry',
-      completed: false
-    },
-    {
-      id: '124',
-      task: 'Clean bathroom',
-      completed: false
-    },
-    {
-      id: '125',
-      task: 'Make bed',
-      completed: true
-    }
-  ]
-
-  const [todos, setTodos] = useState(defaultTasks)
+  const [savedTodos, updateSavedTodos] = useLocalStorage('todo-app', [])
+  const [todos, setTodos] = useState(savedTodos)
 
   const addTodo = (newTodo) => {
     const updatedTodos = [...todos, newTodo]
     setTodos(updatedTodos)
+    updateSavedTodos(updatedTodos)
   }
 
   const deleteTodo = (id) => {
@@ -33,10 +18,12 @@ const TodoList = () => {
       return todo.id !== id
     })
     setTodos(updatedTodos)
+    updateSavedTodos(updatedTodos)
   }
 
   const handleClear = () => {
     setTodos([])
+    updateSavedTodos([])
   }
 
   const toggleComplete = (id) => {
@@ -49,6 +36,7 @@ const TodoList = () => {
         : todo
     })
     setTodos(updatedTodos)
+    updateSavedTodos(updatedTodos)
   }
 
   const updateTask = (id, newTask) => {
@@ -61,6 +49,7 @@ const TodoList = () => {
         : todo
     })
     setTodos(updatedTodos)
+    updateSavedTodos(updatedTodos)
   }
 
   return (
