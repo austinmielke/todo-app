@@ -1,8 +1,14 @@
-# React + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A todo app created in React to test concepts learned in the ui.dev [react.gg](https://react.gg/) course.
 
-Currently, two official plugins are available:
+### Tools Leveraged
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Vite](https://vitejs.dev/): project generation and development environment
+- [ESLint](https://eslint.org/) and [Prettier](https://prettier.io/): linting and code formatting
+- [Tailwind CSS](https://tailwindcss.com/) and [daisyUI](https://daisyui.com/): frontend styling, component library, and theming
+- [theme-change](https://github.com/saadeghi/theme-change): theme changing
+- [Nano ID](https://github.com/ai/nanoid): unique string ID generation
+- [useHooks](https://usehooks.com/): localStorage React hook
+- [favicon.io](https://favicon.io/): favicon generation
+- [react-icons](https://react-icons.github.io/react-icons): icons
