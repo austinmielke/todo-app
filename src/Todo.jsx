@@ -1,8 +1,15 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 
 const Todo = ({ deleteTodo, todo, toggleComplete, updateTask }) => {
+  const inputRef = useRef()
   const [editing, setEditing] = useState(false)
   const [updateInputValue, setUpdateInputValue] = useState(todo.task)
+
+  useEffect(() => {
+    if (editing) {
+      inputRef.current.focus()
+    }
+  }, [editing])
 
   const handleComplete = () => {
     if (!editing) {
@@ -52,6 +59,7 @@ const Todo = ({ deleteTodo, todo, toggleComplete, updateTask }) => {
             name="update-todo"
             onChange={handleInputChange}
             onKeyDown={handleInputKeyDown}
+            ref={inputRef}
             type="text"
             value={updateInputValue}
           />
